@@ -8,7 +8,8 @@ from util.Utility import timeit
 
 class Node:
 
-    def __init__(self, value):
+    def __init__(self, key, value):
+        self.key = key
         self.value = value
         self.parent = None
         self.left_child = None
@@ -17,16 +18,44 @@ class Node:
 
 class BST:
 
-    def __init__(self, root):
-        self.root = root
+    self.root = None
+    self.current_root = self.root
 
-    def insert(self, x):
+    def insert(self, node):
+        """
+
+        :param node:
+        :return:
+        """
+
+
         pass
 
-    def search(self, k):
-        pass
+    def search(self, key):
+        """
+        Searches for a particular key in the binary search tree
+        :param key: key to be searched
+        :return: the value of the corresponding key if found in the tree otherwise -1
+        """
 
-    def delete(self, x):
+        if key == self.current_root.key:
+            return self.current_root
+
+        elif key > self.current_root.key:
+            if self.current_root.right_child is None:
+                return -1
+            else:
+                self.current_root = self.current_root.right_child
+                self.search(key)
+
+        else:
+            if self.current_root.left_child is None:
+                return -1
+            else:
+                self.current_root = self.current_root.left_child
+                self.search(key)
+
+    def delete(self, key):
         pass
 
     def max(self):
@@ -35,10 +64,10 @@ class BST:
     def min(self):
         pass
 
-    def previous(self, k):
+    def previous(self, key):
         pass
 
-    def next(self, k):
+    def next(self, key):
         pass
 
 
