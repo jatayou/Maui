@@ -57,14 +57,43 @@ class BST:
                 self.current_root = self.current_root.left_child
                 self.search(key)
 
+
+    def search(self, node, key):
+        """
+         This is search for key from a given node and  return the last node it  searched
+        """
+        if key == node.key:
+            return node
+
+        elif key > node.key:
+            if node.right_child is None:
+                return node
+            else:
+                node = node.right_child
+                self.search(node,key)
+
+        else:
+            if node.left_child is None:
+                return node
+            else:
+                node = node.left_child
+                self.search(node,key)
+
     def delete(self, key):
         pass
 
     def max(self):
-        pass
+        node = self.root
+        while node.right_child is  not None:
+            node = node.right_child
+        return node.key
 
     def min(self):
-        pass
+        node = self.root
+        while node.left_child is  not None:
+            node = node.left_child
+        return node.key
+
 
     def previous(self, key):
         pass
@@ -72,8 +101,5 @@ class BST:
     def next(self, key):
         pass
 
-
-
-if __name__ == "__main__":
 
 
