@@ -22,6 +22,7 @@ class BST:
         self.root = None
         self.current_root = self.root
 
+
     def insert(self, node):
         """
         Inserts a node into the bst.
@@ -29,10 +30,29 @@ class BST:
         :return: None
         """
 
+        if self.current_root is None:
+            self.root = node
 
+        else:
+            if node.key < self.current_root.key:
+                if self.current_root.left_child is None:
+                    self.current_root.left_child = node
+                    node.parent = self.current_root
+                else:
+                    self.current_root = self.current_root.left_child
+                    self.insert(node)
 
+            elif node.key > self.current_root.key:
+                if self.current_root.right_child is None:
+                    self.current_root.right_child = node
+                    node.parent = self.current_root
+                else:
+                    self.current_root = self.current_root.right_child
+                    self.insert(node)
 
-        pass
+            else:
+                self.current_root.value = node.value
+
 
     def search(self, key):
         """
@@ -56,6 +76,7 @@ class BST:
             else:
                 self.current_root = self.current_root.left_child
                 self.search(key)
+
 
 
     def search(self, node, key):
@@ -82,11 +103,13 @@ class BST:
     def delete(self, key):
         pass
 
+
     def max(self):
         node = self.root
         while node.right_child is  not None:
             node = node.right_child
         return node.key
+
 
     def min(self):
         node = self.root
@@ -95,8 +118,10 @@ class BST:
         return node.key
 
 
+
     def previous(self, key):
         pass
+
 
     def next(self, key):
         pass
