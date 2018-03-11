@@ -18,15 +18,18 @@ class Node:
 
 class BST:
 
-    self.root = None
-    self.current_root = self.root
+    def __init__(self):
+        self.root = None
+        self.current_root = self.root
 
     def insert(self, node):
         """
-
-        :param node:
-        :return:
+        Inserts a node into the bst.
+        :param node: A node object
+        :return: None
         """
+
+
 
 
         pass
@@ -37,7 +40,6 @@ class BST:
         :param key: key to be searched
         :return: the value of the corresponding key if found in the tree otherwise -1
         """
-
         if key == self.current_root.key:
             return self.current_root
 
